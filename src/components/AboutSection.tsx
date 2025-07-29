@@ -76,7 +76,7 @@ export default function AboutSection() {
                                 Drop Link makes it effortless to bring together everything your audience needs — from your Instagram, TikTok, YouTube, portfolio, store, podcast, or blog — into one beautifully branded link-in-bio page.
                             </p>
                             <p className="text-base sm:text-lg lg:text-xl text-white/85 font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                                Whether you're a creator, entrepreneur, or brand, Drop Link helps you build a focused, high-converting hub in just minutes.
+                                Whether you&apos;re a creator, entrepreneur, or brand, Drop Link helps you build a focused, high-converting hub in just minutes.
                                 <span className="font-semibold text-[#5eb94b] hover:text-white transition-colors duration-300 cursor-pointer"> No code. No limits. </span>
                                 Just link, launch, and grow.
                             </p>
