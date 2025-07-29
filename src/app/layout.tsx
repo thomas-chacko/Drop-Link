@@ -13,9 +13,16 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Drop Link",
+  title: "Drop Link - One Link. Endless Possibilities.",
   description:
-    "Drop all your important links in one place and share a single, smart URL with your audience.",
+    "Drop all your important links in one place and share a single, smart URL with your audience. Create your link collection today.",
+  keywords: ["link sharing", "bio link", "social media links", "link tree", "url shortener"],
+  authors: [{ name: "Drop Link" }],
+  openGraph: {
+    title: "Drop Link - One Link. Endless Possibilities.",
+    description: "Drop all your important links in one place and share a single, smart URL with your audience.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
