@@ -1,48 +1,22 @@
+'use client';
+
 import React from 'react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function AboutSection() {
+    const { scrollY } = useScrollAnimation();
     return (
-        <section id="about" data-section="about" className="relative min-h-screen bg-gradient-to-br from-[#5eb94b] via-[#4a8bc2] to-[#5195cc] overflow-hidden">
-            {/* Animated Background Elements */}
-            <div className="absolute inset-0">
-                {/* Floating Orbs */}
-                <div className="absolute top-32 left-8 lg:left-16 w-24 h-24 lg:w-36 lg:h-36 bg-white/8 rounded-full blur-2xl animate-float-slow"></div>
-                <div className="absolute top-20 right-12 lg:right-24 w-20 h-20 lg:w-28 lg:h-28 bg-[#5eb94b]/15 rounded-full blur-xl animate-bounce animate-glow"></div>
-                <div className="absolute bottom-40 left-1/3 w-32 h-32 lg:w-48 lg:h-48 bg-white/6 rounded-full blur-3xl animate-float-slow" style={{ animationDelay: '1.5s' }}></div>
-                <div className="absolute bottom-24 right-8 lg:right-16 w-16 h-16 lg:w-24 lg:h-24 bg-[#5eb94b]/20 rounded-full blur-lg animate-bounce animate-glow" style={{ animationDelay: '2.5s' }}></div>
+        <section id="about" data-section="about" className="relative min-h-screen overflow-hidden">
+            {/* Content overlay with subtle gradient for section distinction */}
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/5 to-transparent"></div>
 
-                {/* Sparkle Particles */}
-                <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-white rounded-full animate-sparkle"></div>
-                <div className="absolute top-2/3 right-1/3 w-1 h-1 bg-[#5eb94b] rounded-full animate-sparkle" style={{ animationDelay: '0.8s' }}></div>
-                <div className="absolute bottom-1/4 left-2/3 w-3 h-3 bg-white/80 rounded-full animate-sparkle" style={{ animationDelay: '1.3s' }}></div>
-                <div className="absolute top-1/2 right-1/4 w-2 h-2 bg-[#5eb94b]/90 rounded-full animate-sparkle" style={{ animationDelay: '1.8s' }}></div>
-
-                {/* Animated Lines */}
-                <div className="absolute top-1/3 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/25 to-transparent animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                <div className="absolute bottom-1/3 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#5eb94b]/35 to-transparent animate-pulse" style={{ animationDelay: '2s' }}></div>
-
-                {/* Ripple Effects */}
-                <div className="absolute top-1/3 right-1/4 w-5 h-5 border border-white/25 rounded-full animate-ripple" style={{ animationDelay: '0.5s' }}></div>
-                <div className="absolute bottom-1/2 left-1/3 w-4 h-4 border border-[#5eb94b]/35 rounded-full animate-ripple" style={{ animationDelay: '1.5s' }}></div>
-            </div>
-
-            {/* Geometric Pattern Overlay */}
-            <div className="absolute inset-0 opacity-8">
-                <svg className="w-full h-full animate-float-slow" viewBox="0 0 100 100" preserveAspectRatio="none" style={{ animationDelay: '1s' }}>
-                    <defs>
-                        <pattern id="aboutGrid" width="12" height="12" patternUnits="userSpaceOnUse">
-                            <path d="M 12 0 L 0 0 0 12" fill="none" stroke="white" strokeWidth="0.3" />
-                        </pattern>
-                        <pattern id="aboutDots" width="25" height="25" patternUnits="userSpaceOnUse">
-                            <circle cx="12.5" cy="12.5" r="0.8" fill="white" opacity="0.2" />
-                        </pattern>
-                    </defs>
-                    <rect width="100" height="100" fill="url(#aboutGrid)" />
-                    <rect width="100" height="100" fill="url(#aboutDots)" />
-                </svg>
-            </div>
-
-            <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
+            <div 
+                className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24"
+                style={{ 
+                    transform: `translateY(${Math.max(0, (scrollY - 400) * 0.05)}px)`,
+                    opacity: scrollY > 200 ? Math.min(1, (scrollY - 200) / 300) : 0
+                }}
+            >
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center min-h-[80vh]">
 
                     {/* Left Content */}

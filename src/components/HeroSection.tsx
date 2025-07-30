@@ -1,51 +1,22 @@
+'use client';
+
 import React from 'react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function HeroSection() {
+    const { scrollY } = useScrollAnimation();
     return (
-        <section id="hero" className="relative min-h-screen bg-gradient-to-br from-[#5195cc] via-[#4a8bc2] to-[#5eb94b] overflow-hidden">
-            {/* Animated Particle Background */}
-            <div className="absolute inset-0">
-                {/* Large Floating Orbs with Enhanced Animation */}
-                <div className="absolute top-20 left-4 lg:left-10 w-20 h-20 lg:w-32 lg:h-32 bg-white/10 rounded-full blur-xl animate-float-slow"></div>
-                <div className="absolute top-40 right-8 lg:right-20 w-16 h-16 lg:w-24 lg:h-24 bg-[#5eb94b]/20 rounded-full blur-lg animate-bounce animate-glow"></div>
-                <div className="absolute bottom-32 left-1/4 w-24 h-24 lg:w-40 lg:h-40 bg-white/5 rounded-full blur-2xl animate-float-slow" style={{ animationDelay: '1s' }}></div>
-                <div className="absolute bottom-20 right-4 lg:right-10 w-20 h-20 lg:w-28 lg:h-28 bg-[#5eb94b]/15 rounded-full blur-xl animate-bounce animate-glow" style={{ animationDelay: '2s' }}></div>
+        <section id="hero" className="relative min-h-screen overflow-hidden">
+            {/* Content overlay for better readability */}
+            <div className="absolute inset-0 bg-black/5"></div>
 
-                {/* Small Sparkle Particles */}
-                <div className="absolute top-1/3 left-1/3 w-2 h-2 bg-white rounded-full animate-sparkle"></div>
-                <div className="absolute top-1/2 right-1/4 w-1 h-1 bg-[#5eb94b] rounded-full animate-sparkle" style={{ animationDelay: '0.5s' }}></div>
-                <div className="absolute bottom-1/3 left-1/5 w-3 h-3 bg-white/70 rounded-full animate-sparkle" style={{ animationDelay: '1s' }}></div>
-                <div className="absolute top-3/4 right-1/3 w-2 h-2 bg-[#5eb94b]/80 rounded-full animate-sparkle" style={{ animationDelay: '1.5s' }}></div>
-                <div className="absolute top-1/4 left-2/3 w-1 h-1 bg-white rounded-full animate-sparkle" style={{ animationDelay: '2s' }}></div>
-                <div className="absolute bottom-1/4 right-1/5 w-2 h-2 bg-[#5eb94b] rounded-full animate-sparkle" style={{ animationDelay: '2.5s' }}></div>
-
-                {/* Animated Lines with Ripple Effect */}
-                <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse"></div>
-                <div className="absolute top-3/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#5eb94b]/40 to-transparent animate-pulse" style={{ animationDelay: '1.5s' }}></div>
-
-                {/* Ripple Effects */}
-                <div className="absolute top-1/4 left-1/4 w-4 h-4 border border-white/20 rounded-full animate-ripple"></div>
-                <div className="absolute bottom-1/3 right-1/3 w-6 h-6 border border-[#5eb94b]/30 rounded-full animate-ripple" style={{ animationDelay: '1s' }}></div>
-                <div className="absolute top-2/3 left-2/3 w-3 h-3 border border-white/25 rounded-full animate-ripple" style={{ animationDelay: '2s' }}></div>
-            </div>
-
-            {/* Enhanced Geometric Patterns */}
-            <div className="absolute inset-0 opacity-10">
-                <svg className="w-full h-full animate-float-slow" viewBox="0 0 100 100" preserveAspectRatio="none">
-                    <defs>
-                        <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
-                            <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" strokeWidth="0.5" />
-                        </pattern>
-                        <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
-                            <circle cx="10" cy="10" r="1" fill="white" opacity="0.3" />
-                        </pattern>
-                    </defs>
-                    <rect width="100" height="100" fill="url(#grid)" />
-                    <rect width="100" height="100" fill="url(#dots)" />
-                </svg>
-            </div>
-
-            <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-20">
+            <div 
+                className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-20"
+                style={{ 
+                    transform: `translateY(${scrollY * 0.1}px)`,
+                    opacity: Math.max(0, 1 - scrollY / 800)
+                }}
+            >
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-[80vh]">
 
                     {/* Left Content */}

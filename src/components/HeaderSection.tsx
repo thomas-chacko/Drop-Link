@@ -6,14 +6,16 @@ export default function HeaderSection() {
     const [isVisible, setIsVisible] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+
+
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
                 setIsVisible(entry.isIntersecting);
             },
             {
-                threshold: 0.1, // Trigger when 10% of About section is visible
-                rootMargin: '-100px 0px 0px 0px' // Offset to trigger slightly after About section appears
+                threshold: 0.2, // Trigger when 20% of About section is visible
+                rootMargin: '-200px 0px 0px 0px' // Offset to trigger when About section is more in view
             }
         );
 
@@ -65,7 +67,7 @@ export default function HeaderSection() {
 
     return (
         <header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-out ${isVisible
+            className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 ease-out ${isVisible
                 ? 'translate-y-0 opacity-100'
                 : '-translate-y-full opacity-0'
                 }`}
