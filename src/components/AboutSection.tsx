@@ -1,6 +1,8 @@
+import React from 'react';
+
 export default function AboutSection() {
     return (
-        <section className="relative min-h-screen bg-gradient-to-br from-[#5eb94b] via-[#4a8bc2] to-[#5195cc] overflow-hidden">
+        <section id="about" data-section="about" className="relative min-h-screen bg-gradient-to-br from-[#5eb94b] via-[#4a8bc2] to-[#5195cc] overflow-hidden">
             {/* Animated Background Elements */}
             <div className="absolute inset-0">
                 {/* Floating Orbs */}

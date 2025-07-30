@@ -1,6 +1,8 @@
+import React from 'react';
+
 export default function HeroSection() {
     return (
-        <section className="relative min-h-screen bg-gradient-to-br from-[#5195cc] via-[#4a8bc2] to-[#5eb94b] overflow-hidden">
+        <section id="hero" className="relative min-h-screen bg-gradient-to-br from-[#5195cc] via-[#4a8bc2] to-[#5eb94b] overflow-hidden">
             {/* Animated Particle Background */}
             <div className="absolute inset-0">
                 {/* Large Floating Orbs with Enhanced Animation */}
