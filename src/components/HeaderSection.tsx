@@ -11,22 +11,23 @@ export default function HeaderSection() {
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
-                setIsVisible(entry.isIntersecting);
+                // Show header when NOT in hero section (when hero section is not intersecting)
+                setIsVisible(!entry.isIntersecting);
             },
             {
-                threshold: 0.2, // Trigger when 20% of About section is visible
-                rootMargin: '-200px 0px 0px 0px' // Offset to trigger when About section is more in view
+                threshold: 0.3, // Trigger when 30% of hero section is visible/not visible
+                rootMargin: '0px 0px -100px 0px' // Small offset to prevent flickering
             }
         );
 
-        const aboutSection = document.querySelector('[data-section="about"]');
-        if (aboutSection) {
-            observer.observe(aboutSection);
+        const heroSection = document.querySelector('#hero');
+        if (heroSection) {
+            observer.observe(heroSection);
         }
 
         return () => {
-            if (aboutSection) {
-                observer.unobserve(aboutSection);
+            if (heroSection) {
+                observer.unobserve(heroSection);
             }
         };
     }, []);
@@ -94,14 +95,11 @@ export default function HeaderSection() {
                     {/* Desktop Navigation Links */}
                     <nav className={`hidden lg:flex items-center space-x-6 xl:space-x-8 transition-all duration-500 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
                         }`}>
-                        {navigationLinks.map((link, index) => (
+                        {navigationLinks.map((link) => (
                             <a
                                 key={link.href}
                                 href={link.href}
-                                className={`text-sm xl:text-base font-medium transition-all duration-300 hover:scale-105 transform relative group ${link.label === 'About'
-                                    ? 'text-white hover:text-[#5eb94b]'
-                                    : 'text-white/80 hover:text-white'
-                                    }`}
+                                className="text-sm xl:text-base font-medium transition-all duration-300 hover:scale-105 transform relative group text-white/80 hover:text-white"
                             >
                                 {link.label}
                                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#5eb94b] transition-all duration-300 group-hover:w-full"></span>
@@ -157,8 +155,7 @@ export default function HeaderSection() {
                                         key={link.href}
                                         href={link.href}
                                         onClick={closeMobileMenu}
-                                        className={`block px-6 py-4 mx-2 text-gray-800 hover:text-white font-medium text-lg rounded-2xl transition-all duration-300 group relative overflow-hidden ${link.label === 'About' ? 'text-[#5195cc]' : ''
-                                            }`}
+                                        className="block px-6 py-4 mx-2 text-gray-800 hover:text-white font-medium text-lg rounded-2xl transition-all duration-300 group relative overflow-hidden"
                                         style={{
                                             animationDelay: `${linkIndex * 80}ms`,
                                             transform: isMobileMenuOpen ? 'translateX(0)' : 'translateX(-20px)',
@@ -177,10 +174,7 @@ export default function HeaderSection() {
                                             </svg>
                                         </span>
 
-                                        {/* Active indicator */}
-                                        {link.label === 'About' && (
-                                            <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-[#5eb94b] rounded-r-full"></span>
-                                        )}
+
                                     </a>
                                 ))}
                             </div>
