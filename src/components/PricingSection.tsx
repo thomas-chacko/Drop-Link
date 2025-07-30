@@ -101,7 +101,7 @@ export default function PricingSection() {
                     {/* Subheading */}
                     <div className="animate-slide-in-up" style={{ animationDelay: '0.4s' }}>
                         <p className="text-lg sm:text-xl lg:text-2xl text-white/85 font-light leading-relaxed max-w-3xl mx-auto mb-8">
-                            Start free, upgrade when you're ready. No hidden fees, cancel anytime.
+                            Start free, upgrade when you&apos;re ready. No hidden fees, cancel anytime.
                         </p>
 
                         {/* Billing Toggle */}

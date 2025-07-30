@@ -10,9 +10,9 @@ export default function HeroSection() {
             {/* Content overlay for better readability */}
             <div className="absolute inset-0 bg-black/5"></div>
 
-            <div 
+            <div
                 className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-20"
-                style={{ 
+                style={{
                     transform: `translateY(${scrollY * 0.1}px)`,
                     opacity: Math.max(0, 1 - scrollY / 800)
                 }}
